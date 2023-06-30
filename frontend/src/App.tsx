@@ -1,20 +1,28 @@
-import React, {useState} from "react";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import "./App.css"
+import React, { useState } from "react";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import TaskList from "./components/TaskList";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 
 const App = () => {
-
   const [currentForm, setCurrentForm] = useState("login");
 
   const toggleForm = (formName: string) => {
     setCurrentForm(formName);
-  }
+  };
 
   return (
-    <div className="App">
-      {currentForm === "login" ? <Login onFormSwitch = {toggleForm}/> : <Register onFormSwitch = {toggleForm}/>}
-    </div>  
+    // <TaskList/>
+    <div>
+      {/* {currentForm === "login" ? <Login onFormSwitch = {toggleForm}/> : <Register onFormSwitch = {toggleForm}/>} */}
+      <TaskList />
+    </div>
   );
 };
 
